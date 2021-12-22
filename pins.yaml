@@ -1,0 +1,8 @@
+---
+debug: false
+buttonPin:
+  mode: OUTPUT
+  pin: 3
+buzzPin:
+  mode: OUTPUT
+  pin: 5
