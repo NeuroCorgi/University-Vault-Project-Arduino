@@ -24,5 +24,5 @@ pinName:
 `make test-(testname)`
 testname-name of the component to test
 
-####
+## Note
 Works only on Linux/MacOs 
