@@ -44,7 +44,6 @@ uint8_t rotaryEncoderButton() {
  * @return password entered by user through the rotary encoder
  */
 uint32_t getPassword() {
-    digitalWrite(A1, HIGH);
     uint32_t password = 0;
 
     uint8_t pas_CLK = 0;    /* Rotary encoder clock pin previous state  */

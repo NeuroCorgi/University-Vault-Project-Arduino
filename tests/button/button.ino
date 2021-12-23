@@ -5,13 +5,13 @@ void setup() {
 }
 
 void loop() {
-    // int cState = digitalRead(A0);
-    // if (cState == LOW) {
-    //     delay(10);
-    //     cState = digitalRead(A0);
-    //     if (cState == LOW) {
-    //         digitalWrite(A1, HIGH);
-    //     }
-    // }
-    // digitalWrite(A1, LOW);
+    static int state = LOW;
+    static int previousButtonState;
+    int buttonState = digitalRead(buttonPin);
+
+    if (buttonState == LOW && buttonState != previousButtonState) {
+        state = !state;
+    }
+
+    digitalWrite(ledPin, state);
 }

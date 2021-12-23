@@ -20,7 +20,6 @@
  * Servo pins
  */
 #define servoPin 3
-#define seroVSPin A1
 #define closeBtn A5
 #define setBtn A4
 
@@ -63,7 +62,6 @@ void setupPins() {
     #endif
     
     pinMode(servoPin, OUTPUT);
-    pinMode(seroVSPin, OUTPUT);
     pinMode(closeBtn, INPUT_PULLUP);
     pinMode(setBtn, INPUT_PULLUP);
 
