@@ -33,12 +33,12 @@
 /*
  * Disply pins 
  */
-#define clockPin 11
+#define clockPin 13
 #define latchPin 12
-#define dataPin 13
-#define SSD1 8       // First seven segment display
-#define SSD2 9       // Second seven segment display
-#define SSD3 10      // Third seven segment display
+#define dataPin 11
+#define SSD1 10     // First seven segment display
+#define SSD2 9      // Second seven segment display
+#define SSD3 8      // Third seven segment display
 
 /*
  * Rotary encoder pins
@@ -57,9 +57,7 @@
  * Set pin modes
  */
 void setupPins() {
-    #ifdef DEBUG
-    Serial.begin(2000000);
-    #endif
+    Serial.begin(115200);
     
     pinMode(servoPin, OUTPUT);
     pinMode(closeBtn, INPUT_PULLUP);

@@ -45,7 +45,6 @@ void close() {
     while (closeButton() == HIGH);
     stopSound(); /* Stop alarm when the door is closed */
 
-    digitalWrite(seroVSPin, HIGH);
     lock.write(CLOSE_ANGLE); /* Close the lock */
 
     debug("Closed");
@@ -57,14 +56,12 @@ void close() {
     delay(2000);                                /* Remind user what the password is             */
     resetDisplay();
     SSDISPLAY.isOn = 0; /* Disable display when the vault is closed */
-    digitalWrite(seroVSPin, LOW);
 }
 
 /*
  * Main function to open the vault
  */
 void open() {
-    digitalWrite(seroVSPin, HIGH);
     lock.write(OPEN_ANGLE); /* Open the lock */
 
     debug("Opened");
@@ -73,8 +70,6 @@ void open() {
 
     resetDisplay();
     turnIndicatorLEDs();
-
-    digitalWrite(seroVSPin, LOW);
 }
 
 #endif /* LOCK_H */

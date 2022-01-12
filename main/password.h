@@ -16,6 +16,7 @@
 #include "common.h"
 
 uint32_t PASSWORD;
+uint8_t REQUIRES_2FA = HIGH;
 
 /*
  * Check if passed password is equal to stored password
@@ -33,7 +34,7 @@ uint8_t checkPassword(uint32_t password) {
  */
 void setPassword(uint32_t password) {
     PASSWORD = password;
-    EEPROM.write(sizeof(char), PASSWORD); /* Write password adter configuration byte    */
+    EEPROM.put(sizeof(byte), PASSWORD); /* Write password adter configuration byte    */
 }
 
 #endif /* PASSWORD_H */

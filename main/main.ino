@@ -17,12 +17,12 @@
 
 
 /*
- * Setup vault after first setup
+ * Setup vault after the first start up
  */
 void firstSetup(void) {
     uint32_t password = getPassword();
     debug(password);
-    digitalWrite(A1, LOW);
+    Serial.print("setup");
     setPassword(password);
     close();
 }
@@ -49,6 +49,7 @@ void setup() {
         EEPROM.put(0, config);  /*                                                                      */
     } else {
         debug("Not first startup");
+        Serial.print("startup");
 
         EEPROM.get(sizeof(byte), PASSWORD); /* Set password after restart           */
         if (closeButton() == LOW) {         /* The vault was closed before restart  */
@@ -67,11 +68,21 @@ void loop() {
         uint8_t n_attempts = 0;
         delay(100);
         while (n_attempts < 3) {
-            uint8_t password = getPassword();
+            uint32_t password = getPassword();
             if (checkPassword(password)) {
-                open();
+                if (REQUIRES_2FA) {
+                    Serial.print("req_2fa");
+                    delay(200);
+                    while (!Serial.available());
+                    String buff = Serial.readString();
+                    if (buff == "confirm_2fa") {
+                        open();
+                        Serial.print("attempt_1");
+                    }
+                }
                 break;
             } else {
+                Serial.print("attempt_0");
                 n_attempts++;
                 resetDisplay();
             }
